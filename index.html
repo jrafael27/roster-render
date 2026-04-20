@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+<script>
+    const patients = [
+        { id: "P101", name: "Santos, Maria", status: "Active", balance: 1500.00, ward: "A" },
+        { id: "P102", name: "Reyes, Jose", status: "Discharged", balance: 0.00, ward: "B" },
+        { id: "P103", name: "Cruz, Ana", status: "Active", balance: 0.00, ward: "A" },
+        { id: "P104", name: "Bautista, Luis", status: "Active", balance: 5200.50, ward: "C" },
+        { id: "P105", name: "Garcia, Elena", status: "Discharged", balance: 300.00, ward: "B" }
+    ];
+
+    function get_patients() {
+        const container = document.getElementById("app");
+        
+        patients.forEach(patient =>{
+            const div = document.createElement("div");
+
+            div.innerHTML = `
+                <p>Patient's Name   : ${patient.name}</p><br>
+                <p>Patient's Status : ${patient.status}</p><br>
+                <p>Patient's Balance: ${patient.balance}</p><br>
+            `;
+
+            div.style.padding = "10px";
+
+            if(patient.status == "Discharged"){
+                div.style.backgroundColor = "#C5C6C7";
+            }
+
+            if(patient.balance > 0 && patient.status == "Active"){
+                div.style.border = "2px solid red";
+            }
+            
+            container.appendChild(div);
+        });
+    }
+
+    get_patients();
+</script>
